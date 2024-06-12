@@ -6,7 +6,7 @@
                 <h4>Room Lists</h4>
                 <div class="d-flex gap-3 flex-wrap justify-content-center">
                     @foreach ($rooms as $item)
-                    <a href="{{ route('reservation', $item->id) }}" class="shadow-sm" style="width:20rem">
+                    <div class="shadow-sm" style="width:20rem">
                         <div id="carouselExampleIndicators" class="carousel slide">
                             <div class="carousel-indicators">
                               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -41,9 +41,9 @@
                                 <p class="badge {{ ($item->avaibility == 1 ? 'text-bg-success' : 'text-bg-danger') }}"><small>{{ ($item->avaibility == 1 ? 'Available' : 'Not Available') }}</small></p>
                             </div>
                             <span class="text-uppercase letter-spacing-1 text-dark">Rp. {{ number_format($item->room_type->price_per_night, 0, ',', '.'); }} / a Night</span>
-                            <button class="btn btn-primary w-100 mt-3">Book Now</button>
+                            <a href="{{ route('reservation', $item->id) }}" class="btn btn-primary w-100 mt-3 {{ ($item->avaibility == 0 ? 'd-none' : 'd-block') }}">Book Now</a>
                         </div>
-                    </a>
+                    </div>
                     @endforeach
                 </div>
             </div>
